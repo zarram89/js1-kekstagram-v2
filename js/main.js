@@ -1,3 +1,6 @@
-import { getPictures } from './data.js';
+import { getPictures } from './data';
+import { renderPictures } from './picture';
 
-console.log(getPictures());
+const similarPicturesListElement = document.querySelector('.pictures');
+
+renderPictures(getPictures(), similarPicturesListElement);
