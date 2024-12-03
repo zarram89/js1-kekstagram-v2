@@ -15,7 +15,10 @@ const createPicture = (picture) => {
 const renderPictures = (pictures, container) => {
   const similarListFragment = document.createDocumentFragment();
 
-  pictures.forEach((picture) => similarListFragment.appendChild(createPicture(picture)));
+  pictures.forEach((picture) => {
+    const pictureElement = createPicture(picture);
+    similarListFragment.appendChild(pictureElement);
+  });
 
   container.appendChild(similarListFragment);
 };
