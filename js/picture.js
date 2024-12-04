@@ -1,3 +1,5 @@
+import { showBigPicture } from './big-picture.js';
+
 const createPicture = (picture) => {
   const {url, likes, comments, description} = picture;
 
@@ -8,6 +10,10 @@ const createPicture = (picture) => {
   pictureElement.querySelector('.picture__img').alt = description;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
   pictureElement.querySelector('.picture__likes').textContent = likes;
+
+  pictureElement.addEventListener('click', () => {
+    showBigPicture(picture);
+  });
 
   return pictureElement;
 };

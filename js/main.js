@@ -1,5 +1,5 @@
-import { getPictures } from './data';
-import { renderPictures } from './picture';
+import { getPictures } from './data.js';
+import { renderPictures } from './picture.js';
 
 const similarPicturesListElement = document.querySelector('.pictures');
 
