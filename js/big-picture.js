@@ -4,7 +4,6 @@ const body = document.querySelector('body');
 const bigPictureElement = document.querySelector('.big-picture');
 const commentCount = bigPictureElement.querySelector('.social__comment-count');
 const commentList = document.querySelector('.social__comments');
-const commentItem = bigPictureElement.querySelector('.social__comment');
 const commentsLoader = document.querySelector('.comments-loader');
 const cancelButton = document.querySelector('.big-picture__cancel');
 
@@ -15,7 +14,10 @@ let currentComments = [];
 const renderComment = (comment) => {
   const {avatar, message, name} = comment;
 
-  const commentElement = commentItem.cloneNode(true);
+  const commentElement = document.createElement('li');
+  commentElement.innerHTML =
+    '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
+  commentElement.classList.add('social__comment');
 
   commentElement.querySelector('.social__picture').src = avatar;
   commentElement.querySelector('.social__picture').alt = name;
@@ -54,19 +56,19 @@ const toggleModal = () => {
 
 const hideBigPicture = () => {
   toggleModal();
+  document.removeEventListener('keydown', onDocumentKeydown);
   commentsShown = 0;
 };
 
-const onDocumentKeydown = (evt) => {
+function onDocumentKeydown(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     hideBigPicture();
   }
-};
+}
 
 const onCancelButtonClick = () => {
   hideBigPicture();
-  document.removeEventListener('keydown', onDocumentKeydown);
 };
 
 const onCommentsLoaderClick = () => {
@@ -90,9 +92,7 @@ const showBigPicture = (picture) => {
   commentsLoader.classList.add('hidden');
 
   renderBigPictureDetails(picture);
-  if (currentComments.length > 0) {
-    renderComments();
-  }
+  renderComments();
 
   document.addEventListener('keydown', onDocumentKeydown);
 };
