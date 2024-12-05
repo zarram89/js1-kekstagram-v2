@@ -1,6 +1,6 @@
 import { showBigPicture } from './big-picture.js';
 
-const createPicture = (picture) => {
+const renderPicture = (picture) => {
   const {url, likes, comments, description} = picture;
 
   const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
@@ -11,9 +11,12 @@ const createPicture = (picture) => {
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
   pictureElement.querySelector('.picture__likes').textContent = likes;
 
-  pictureElement.addEventListener('click', () => {
+  const onPictureElementClick = (evt) => {
+    evt.preventDefault();
     showBigPicture(picture);
-  });
+  };
+
+  pictureElement.addEventListener('click', onPictureElementClick);
 
   return pictureElement;
 };
@@ -22,7 +25,7 @@ const renderPictures = (pictures, container) => {
   const similarListFragment = document.createDocumentFragment();
 
   pictures.forEach((picture) => {
-    const pictureElement = createPicture(picture);
+    const pictureElement = renderPicture(picture);
     similarListFragment.appendChild(pictureElement);
   });
 

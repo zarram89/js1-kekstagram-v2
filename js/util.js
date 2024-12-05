@@ -11,4 +11,10 @@ const isEnterKey = (evt) => evt.key === 'Enter';
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomInteger, getRandomArrayElement, isEnterKey, isEscapeKey, };
+const toggleClass = (element, className = '') => {
+  if (element) {
+    element.classList.toggle(className);
+  }
+};
+
+export {getRandomInteger, getRandomArrayElement, isEnterKey, isEscapeKey, toggleClass, };
