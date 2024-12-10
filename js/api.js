@@ -1,15 +1,13 @@
-
-
-const getData = async (onSuccess, onFail, container) => {
+const getData = async (onSuccess, onFail) => {
   try {
-    const response = await fetch('https://33.javascript.htmlacademy.pro/kekstagram/data');
+    const response = await fetch('https://32.javascript.htmlacademy.pro/kekstagram/data');
 
     if (!response.ok) {
       throw new Error('Не удалось загрузить фотографии');
     }
 
     const offers = await response.json();
-    onSuccess(offers, container);
+    onSuccess(offers);
   } catch (error) {
     onFail(error.message);
   }
@@ -17,7 +15,7 @@ const getData = async (onSuccess, onFail, container) => {
 
 const sendData = async (onSuccess, onFail, body) => {
   try {
-    const response = await fetch('https://33.javascript.htmlacademy.pro/kekstagram',
+    const response = await fetch('https://32.javascript.htmlacademy.pro/kekstagram',
       {
         method: 'post',
         body,

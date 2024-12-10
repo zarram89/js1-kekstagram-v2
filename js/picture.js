@@ -1,4 +1,5 @@
 import { showBigPicture } from './big-picture.js';
+const container = document.querySelector('.pictures');
 
 const renderPicture = (picture) => {
   const {url, likes, comments, description} = picture;
@@ -21,7 +22,8 @@ const renderPicture = (picture) => {
   return pictureElement;
 };
 
-const renderPictures = (pictures, container) => {
+const renderPictures = (pictures) => {
+  container.querySelectorAll('.picture').forEach((element) => element.remove());
   const similarListFragment = document.createDocumentFragment();
 
   pictures.forEach((picture) => {
